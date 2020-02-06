@@ -26,11 +26,11 @@ module.exports = {
     updateByEmail: (req, res) => {
         const { email } = req.params;
 
-        let updateByEmail = users.filter(item => {
-            if (item.email === email) {
-                return item;
-            }
-        });
+        // let updateByEmail = users.filter(item => {
+        //     if (item.email === email) {
+        //         return item;
+        //     }
+        // });
 
         const index = users.map(item => {
             if (item.email === email) {
