@@ -16,11 +16,11 @@ const dataSchema = new Schema({
     },
     hobby: {
         type: String,
-        required: true
+        required: false
     },
     job: {
         type: String,
-        required: false
+        required: true
     }
 });
 
