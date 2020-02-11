@@ -65,9 +65,27 @@ module.exports = {
             }
         });
         users = deleteEmail;
-        console.log("DELTE", deleteEmail);
+        console.log("DELETE", deleteEmail);
 
         console.log("user", users);
         res.status(200).send({ message: "Test delete By Email", data: users });
+    },
+
+    postData: (req, res) => {
+        try {
+            const data = req.body;
+            const file = req.file;
+
+            users.push({ ...data, avatar: file.path });
+
+            console.log(file);
+
+            res.status(200).send({
+                message: "New data is successfully added",
+                data: users
+            });
+        } catch (error) {
+            console.log(error);
+        }
     }
 };
