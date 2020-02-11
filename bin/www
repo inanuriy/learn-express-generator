@@ -11,7 +11,7 @@ const mongoose = require('mongoose');
 const { PORT } = require("../config");
 
 mongoose
-.connect("mongodb://localhost/todos", {
+.connect("mongodb+srv://inanuri:qwerty123@cluster0-qzzkx.mongodb.net/test?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
