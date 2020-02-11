@@ -1,25 +1,32 @@
-const todos = require("../../models/todos");
+const { Todos } = require("../../models");
 
+// Database Mongo
 module.exports = {
-    getAll: (req, res) => {
-        res.status(200).send({
-            message: "Welcome to todos route",
-            data: todos
-        });
+    getAll: async (req, res) => {
+        try {
+            const result = await Todos.find({}).populate("user", "userName email");
+
+            res.status(200).send({ message: "Show data todos", data: result });
+        } catch (error) {
+            console.log(error);
+        }
     },
+    addData: async (req, res) => {
+        try {
+            const result = await Todos.create(req.body);
 
-    getById: (req, res) => {
-        const { id } = req.params;
-
-        const filterById = todos.filter(item => {
-            if (item.id === parseInt(id)) {
-                return item;
-            }
-        })
-        res.status(200).send({ message: "Test todos route", data: filterById });
+            res.status(200).send({ message: "Add new Todo", data: result });
+        } catch (error) {
+            console.log(error);
+        }
     },
-
-    getByUserName: (req, res) => {
-        res.status(200).send({ message: "Test todos route by UserName" });
+    getById: async (req, res) => {
+        try {
+            const result = await Todos.find({user});            
+            res.status(200).send({ message: "Todos route by id", data: result });
     }
+    catch (error) {
+        console.log(error)
+    }
+}
 };
