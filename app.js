@@ -23,6 +23,7 @@ app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 app.use('/todos', require("./routes/todos"))
 app.use('/users', require('./routes/users'))
+app.use('/data', require('./routes/dataUser'))
 app.use('/assets', express.static("assets"))
 
 
